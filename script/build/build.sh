@@ -22,7 +22,7 @@ echo "build xvid"
 bash xvidcore.sh
 
 echo "build srt"
-bash srt.bash
+bash srt.sh
 
 echo "build opus"
 bash opus.sh
