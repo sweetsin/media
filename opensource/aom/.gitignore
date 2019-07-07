@@ -1,0 +1,9 @@
+tags
+cmbuild
+.cproject
+.project
+.vscode
+TAGS
+build/CMakeCache.txt
+CMakeFiles/
+compile/

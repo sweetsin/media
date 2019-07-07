@@ -1,0 +1,4 @@
+build/generic/=build/
+build/generic/config.log
+build/generic/config.status
+build/generic/platform.inc
