@@ -11,6 +11,11 @@ bash fdk-aac.sh
 
 echo "build xavs2"
 bash xavs2.sh
+ret=$?
+if [ ${ret} != "0" ];then
+    echo "build xavs failed, return ${ret}"
+    exit ${ret}
+fi
 
 echo "build davs2"
 bash davs2.sh

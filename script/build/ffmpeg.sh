@@ -21,6 +21,11 @@ echo "install path is ${install_path}"
 export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${install_path}/lib/pkgconfig
 
 pkg-config --list-all
+ret=$?
+if [ ${ret} != "0" ];then
+    echo "pkg-config return ${ret}"
+    exit 1
+fi
 
 ./configure --enable-shared --enable-pic --disable-static --enable-rpath --prefix=${install_path} \
     --extra-cflags="-I../../include" --extra-ldflags="-L../../lib"  \

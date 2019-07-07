@@ -15,13 +15,8 @@ echo "compile path is ${compile_path}"
 fi
 cd ${compile_path}
 
-openssl_path=${cur_path}/../..
+bash bootstrap
 
-./configure -D OPENSSL_INCLUDE_DIR=${openssl_path}/../include \
-    -D OPENSSL_SSL_LIBRARIES=${openssl_path}/lib/libssl.so \
-    -D OPENSSL_CRYPTO_LIBRARIES=${openssl_path}/lib/libcrypto.so
-
-make clean
 make
 make install
 

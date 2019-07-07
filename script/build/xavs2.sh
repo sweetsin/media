@@ -19,9 +19,24 @@ install_path=${cur_path}/../..
 echo "install path is ${install_path}"
 
 ./configure --enable-shared --enable-pic --prefix=${install_path}
+ret=$?
+if [ ${ret} != "0" ];then
+    echo "configure ${project_name} failed, return ${ret}"
+    exit ${ret}
+fi
 
-make clean
 make
+ret=$?
+if [ ${ret} != "0" ];then
+    echo "make ${project_name} failed, return ${ret}"
+    exit ${ret}
+fi
+
 make install
+ret=$?
+if [ ${ret} != "0" ];then
+    echo "install ${project_name} failed, return ${ret}"
+    exit ${ret}
+fi
 
 echo "build ${project_name} succeed!"
