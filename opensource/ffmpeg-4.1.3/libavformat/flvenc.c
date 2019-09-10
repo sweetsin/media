@@ -46,6 +46,7 @@ static const AVCodecTag flv_video_codec_ids[] = {
     { AV_CODEC_ID_VP6,      FLV_CODECID_VP6 },
     { AV_CODEC_ID_VP6A,     FLV_CODECID_VP6A },
     { AV_CODEC_ID_H264,     FLV_CODECID_H264 },
+    { AV_CODEC_ID_HEVC,     FLV_CODECID_HEVC },
     { AV_CODEC_ID_NONE,     0 }
 };
 
