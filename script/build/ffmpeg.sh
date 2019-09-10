@@ -40,7 +40,7 @@ fi
     --enable-libopus
 
 make clean
-make
+make -j8
 make install
 
 echo "build ${project_name} succeed!"

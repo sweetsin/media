@@ -28,7 +28,7 @@ cmake -D BIN_INSTALL_DIR=bin \
 	 ../../source
 
 make clean
-make
+make -j8
 make install
 
 echo "build ${project_name} succeed!"

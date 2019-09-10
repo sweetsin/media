@@ -22,13 +22,14 @@ if [ ${ret} != "0" ];then
     exit ${ret}
 fi
 
-make
+make -j8
 ret=$?
 if [ ${ret} != "0" ];then
     echo "make failed, return ${ret}"
     exit ${ret}
 fi
 
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/root/src/media/lib
 make install
 ret=$?
 if [ ${ret} != "0" ];then

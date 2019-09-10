@@ -29,7 +29,7 @@ if [ ${ret} != "0" ];then
     exit ${ret}
 fi
 
-make
+make -j8
 ret=$?
 if [ ${ret} != "0" ];then
     echo "make failed, return ${ret}"
