@@ -21,7 +21,7 @@ echo "install path is ${install_path}"
 ./configure --enable-shared --enable-pic --prefix=${install_path}
 
 make clean
-make
+make -j8
 make install
 
 echo "build ${project_name} succeed!"
