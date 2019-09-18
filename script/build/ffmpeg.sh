@@ -40,6 +40,12 @@ fi
 #    --enable-libaom \
 #    --enable-libopus
 
+ret=$?
+if [ ${ret} != "0" ];then
+    echo "configure return ${ret}"
+    exit 1
+fi
+
 make clean
 make -j8
 make install

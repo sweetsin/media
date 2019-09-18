@@ -20,6 +20,12 @@ echo "inistall path is ${install_path}"
 
 ./configure --enable-shared --prefix=${install_path}
 
+ret=$?
+if [ ${ret} != "0" ];then
+    echo "configure failed, return ${ret}"
+    exit 1
+fi
+
 make clean
 make -j8
 make install
