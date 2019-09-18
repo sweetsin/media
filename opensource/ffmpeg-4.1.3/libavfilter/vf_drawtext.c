@@ -27,6 +27,7 @@
  */
 
 #include "config.h"
+#include "libavutil/time.h"
 
 #if HAVE_SYS_TIME_H
 #include <sys/time.h>
@@ -975,6 +976,7 @@ static int func_strftime(AVFilterContext *ctx, AVBPrint *bp,
     const char *fmt = argc ? argv[0] : "%Y-%m-%d %H:%M:%S";
     time_t now;
     struct tm tm;
+    int64_t ms = av_gettime()/1000;
 
     time(&now);
     if (tag == 'L')
@@ -982,6 +984,7 @@ static int func_strftime(AVFilterContext *ctx, AVBPrint *bp,
     else
         tm = *gmtime_r(&now, &tm);
     av_bprint_strftime(bp, fmt, &tm);
+    av_bprintf(bp, ".%03d", (int)(ms % 1000));
     return 0;
 }
 
