@@ -1,5 +1,4 @@
-bin
-include
-lib
-ssl
-share
+bin/
+lib/
+ssl/
+share/
