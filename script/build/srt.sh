@@ -23,12 +23,12 @@ echo "PKG_CONFIG_PATH is ${PKG_CONFIG_PATH}"
 pkg-config --list-all
 
 ./configure --enable-encryption=1 --enable-shared=1 --enable-static=0 --prefix=${install_path} \
-    --openssl-crypto-library=../lib/libcrypto.so \
-    --openssl-include-dir=../include/ \
-    --openssl-ssl-library=../lib/libssl.so
+    --openssl-crypto-library=../../lib/libcrypto.so \
+    --openssl-include-dir=../../include/ \
+    --openssl-ssl-library=../../lib/libssl.so
 
 make clean
-make
+make -j8
 make install
 
 cp -rf ${install_path}/lib/x86_64-linux-gnu/* ${install_path}/lib/
