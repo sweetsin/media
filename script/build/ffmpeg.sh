@@ -32,12 +32,13 @@ fi
     --enable-libsrt \
     --enable-libx264 --enable-gpl \
     --enable-libx265 \
-    --enable-libxavs2 --enable-libdavs2 \
-    --enable-libfdk-aac --enable-nonfree \
-    --enable-libvpx \
-    --enable-libxvid \
-    --enable-libaom \
-    --enable-libopus
+    --enable-libfreetype
+#    --enable-libxavs2 --enable-libdavs2 \
+#    --enable-libfdk-aac --enable-nonfree \
+#    --enable-libvpx \
+#    --enable-libxvid \
+#    --enable-libaom \
+#    --enable-libopus
 
 make clean
 make -j8
