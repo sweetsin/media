@@ -22,14 +22,20 @@ export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${install_path}/lib/pkgconfig
 echo "PKG_CONFIG_PATH is ${PKG_CONFIG_PATH}"
 pkg-config --list-all
 
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/root/src/media/lib
+
 ./configure --enable-encryption=1 --enable-shared=1 --enable-static=0 --prefix=${install_path} \
     --openssl-crypto-library=../../lib/libcrypto.so \
     --openssl-include-dir=../../include/ \
     --openssl-ssl-library=../../lib/libssl.so
+ret=$?
+if [ ${ret} != "0" ];then
+    echo "configure failed, return ${ret}"
+    exit 1
+fi
 
 make clean
 make -j8
 make install
 
-cp -rf ${install_path}/lib/x86_64-linux-gnu/* ${install_path}/lib/
 echo "build ${project_name} succeed!"
