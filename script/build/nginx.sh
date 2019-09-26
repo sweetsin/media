@@ -21,8 +21,10 @@ echo "inistall path is ${install_path}"
 make clean
 
 ./configure --prefix=${install_path} --add-module=../nginx-rtmp-module-master \
+    --with-pcre=${compile_path}/../pcre-8.43 \
+    --with-zlib=${compile_path}/../zlib-1.2.11 \
     --with-http_ssl_module --with-http_stub_status_module \
-    --with-openssl=/root/src/media/opensource/openssl-1.1.1b
+    --with-openssl=${compile_path}/../openssl-1.1.1b
 
 ret=$?
 if [ ${ret} != "0" ];then
@@ -33,7 +35,13 @@ fi
 make -j8
 make install
 
-cp ${cur_path}/nginx_conf/nginx.conf /root/nginx/conf/
-cp ${cur_path}/nginx_conf/stat.xsl /root/nginx/html/
+conf_path=${compile_path}/../../resources/nginx_conf
+if [ -d ${conf_path} ];then
+    cp ${conf_path}/nginx.conf ${install_path}/conf
+    cp ${conf_path}/stat.xsl ${install_path}/html
+    echo "use fixed nginx conf"
+else
+    echo "can't find fixed nginx conf, use default nginx conf"
+fi
 
 echo "build ${project_name} succeed!"
