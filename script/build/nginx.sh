@@ -8,10 +8,10 @@ project_name=nginx-1.16.1
 
 compile_path=${cur_path}/../../opensource/${project_name}
 if [ ! -d ${compile_path} ];then
-echo "compile path: ${compile_path} is not exist, build ${project_name} failed!"
-exit 1
+    echo "compile path: ${compile_path} is not exist, build ${project_name} failed!"
+    exit 1
 else
-echo "compile path is ${compile_path}"
+    echo "compile path is ${compile_path}"
 fi
 cd ${compile_path}
 
@@ -19,6 +19,17 @@ install_path=/root/nginx
 echo "inistall path is ${install_path}"
 
 make clean
+
+pcre_path=${cur_path}/../../opensource/pcre-8.43
+if [ ! -d ${pcre_path} ];then
+    echo "pcre path:{$pcre_path} is not exist"
+    exit 1
+else
+    echo "pcre path is ${pcre_path}"
+    cd ${pcre_path}
+    touch --date="`date`" aclocal.m4 Makefile.am configure Makefile.in
+    cd -
+fi
 
 ./configure --prefix=${install_path} \
     --add-module=../nginx-http-flv-module-master \
