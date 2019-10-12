@@ -32,7 +32,7 @@ else
 fi
 
 ./configure --prefix=${install_path} \
-    --add-module=../nginx-http-flv-module-master \
+    --add-module=../nginx-rtmp-module-master \
     --with-http_ssl_module --with-http_stub_status_module \
     --with-stream \
     --with-pcre=${compile_path}/../pcre-8.43 \
